@@ -1,0 +1,99 @@
+.elements {
+  max-width: 882px;
+  margin: 0px auto;
+  padding-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 21px 18px;
+  width: 100%;
+}
+
+.element {
+  position: relative;
+  width: 282px;
+  border-radius: 10px 10px 10px 10px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.element__photo {
+  width: 282px;
+  height: 282px;
+  border-radius: 10px 10px 0 0;
+  display: block;
+  object-fit: cover;
+  background-color: #000;
+}
+
+.element__button-trash {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+
+.element__button-trash:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.element__button-trash-img {
+  width: 18px;
+  height: 19.3px;
+}
+
+.element__info {
+  display: flex;
+  width: 282px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 18px 31px 21px;
+  border-bottom-right-radius: 10px 10px;
+  border-bottom-left-radius: 10px 10px;
+  position: relative;
+}
+
+.element__text {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 900;
+  color: #000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 215px;
+}
+
+.element__button-heart {
+  background-color: transparent;
+  align-self: center;
+  border: none;
+  width: 21px;
+  height: 19px;
+  background-image: url("../images/button-heart.svg");
+}
+
+.element__button-heart:hover {
+  cursor: pointer;
+  opacity: 50%;
+}
+
+.element__button-heart_active {
+  background-image: url("../images/button-heart_active.png");
+}
+
+@media screen and (max-width: 968px) {
+  .elements {
+    max-width: max-content;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .elements {
+    max-width: max-content;
+    grid-template-columns: 1fr;
+  }
+}

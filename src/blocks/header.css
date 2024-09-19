@@ -1,0 +1,28 @@
+.header {
+  max-width: 882px;
+  margin: 0px auto;
+  padding-top: 45px;
+}
+
+.header__logo {
+  padding-bottom: 41px;
+}
+
+.header__line {
+  max-width: 882px;
+  border-bottom: 1px solid #545454;
+}
+
+@media screen and (max-width: 968px) {
+  header {
+    max-width: 769px;
+
+    .header__logo {
+      padding-left: 30px;
+    }
+
+    .header__line {
+      border-bottom: 1px solid #545454;
+    }
+  }
+}

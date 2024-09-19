@@ -1,0 +1,16 @@
+/* Aplica un estilo global a todos los elementos HTML en la página */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Aplica estilos de la página */
+.page {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #fff;
+  background-color: #000000;
+}
