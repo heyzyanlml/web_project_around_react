@@ -1,3 +1,4 @@
+import React from "react";
 import closeButton from "../images/Close-Icon.png";
 
 export default function ImagePopup({ card, onClose }) {

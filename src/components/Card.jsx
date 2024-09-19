@@ -1,3 +1,4 @@
+import React from "react";
 import trashButton from "../images/Trash.png";
 
 export default function Card({ cardData, onCardClick }) {

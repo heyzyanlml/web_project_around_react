@@ -1,7 +1,8 @@
+import React from "react";
 import editButton from "../images/Edit-Button.png";
 import addButton from "../images/Add-Button.png";
 import api from "../utils/api.js";
-import Card from "./Card.js";
+import Card from "./Card.jsx";
 import { useState, useEffect } from "react";
 
 export default function Main(props) {

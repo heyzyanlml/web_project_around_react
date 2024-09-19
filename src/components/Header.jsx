@@ -1,3 +1,4 @@
+import React from "react";
 import pageLogo from "../images/Logo-white.svg";
 
 export default function Header() {
