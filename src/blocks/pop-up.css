@@ -189,7 +189,7 @@
     height: 46px;
     font-size: 14px;
     font-weight: 400;
-    margin: 25px auto auto; /* Ajusté para tener todo dentro del form*/
-    padding-bottom: 15px;
+    margin: auto;
+    margin-bottom: 15px;
   }
 }

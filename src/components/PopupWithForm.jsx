@@ -12,7 +12,15 @@ export default function PopupWithForm(props) {
         <button className="pop-up__close-button" onClick={props.onClose}>
           <img src={closeButton} alt="Pop up close icon" />
         </button>
-        <form className="pop-up__form" name={props.name}>
+        <form
+          className="pop-up__form"
+          name={props.name}
+          onSubmit={(e) => {
+            e.preventDefault();
+            console.log("Evento onSubmit disparado correctamente"); // Esto verificará si el evento se dispara
+            props.onSubmit(e);
+          }}
+        >
           <h3 className="pop-up__title">{props.title}</h3>
           {props.children}
           <button className="pop-up__save-button" type="submit">

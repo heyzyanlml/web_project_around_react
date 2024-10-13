@@ -150,7 +150,6 @@
     height: 100%;
     margin-right: 0px;
     margin-bottom: 30px;
-    margin-left: 15px;
   }
 
   .profile__info {
@@ -183,6 +182,7 @@
   }
 
   .profile__info-name {
+    margin-top: 15px;
     font-size: 25px;
     line-height: 1.3;
   }

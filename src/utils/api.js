@@ -93,26 +93,10 @@ class Api {
       });
   }
 
-  deleteCardLike(cardId) {
+  changeLikeCardStatus(cardId, isLiked) {
+    // Si ya está "liked", elimina el "like", de lo contrario, añade el "like"
     return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
-      method: "DELETE",
-      headers: this.headers,
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        // si el servidor devuelve un error, rechaza el promise
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  addCardLike(cardId) {
-    return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
-      method: "PUT",
+      method: isLiked ? "DELETE" : "PUT", // Si está "liked", DELETE, si no, PUT
       headers: this.headers,
     })
       .then((res) => {

@@ -43,6 +43,10 @@
   height: 19.3px;
 }
 
+.element__button-trash_hidden {
+  display: none; /* Oculta completamente el botón de eliminar */
+}
+
 .element__info {
   display: flex;
   width: 282px;

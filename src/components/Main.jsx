@@ -3,53 +3,40 @@ import editButton from "../images/Edit-Button.png";
 import addButton from "../images/Add-Button.png";
 import api from "../utils/api.js";
 import Card from "./Card.jsx";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import CurrentUserContext from "../contexts/CurrentUserContext.js";
 
-export default function Main(props) {
-  const [userName, setUserName] = useState("");
-  const [userDescription, setuserDescription] = useState("");
-  const [userAvatar, setUserAvatar] = useState("");
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    api
-      .getUserInfo()
-      .then((res) => {
-        setUserName(res.name);
-        setuserDescription(res.about);
-        setUserAvatar(res.avatar);
-      })
-      .catch((err) => {
-        console.error(`Error obteniendo los datos del usuario: ${err}`); // Si hay un error, lo mostramos en la consola;
-      });
-  }, []);
-
-  useEffect(() => {
-    api.getInitialCards().then((res) => {
-      setCards(res);
-    });
-  }, []);
+export default function Main({
+  onEditAvatarClick,
+  onEditProfileClick,
+  onAddPlaceClick,
+  cards,
+  onCardClick,
+  onCardLike,
+  onCardDelete,
+}) {
+  const currentUser = useContext(CurrentUserContext); //Obtener el Valor de contexto de CurrentUserContext
 
   return (
     <main className="content">
       <section className="profile">
         <div
           className="profile__avatar_update"
-          onClick={props.onEditAvatarClick}
-          style={{ backgroundImage: `url(${userAvatar})` }}
+          onClick={onEditAvatarClick}
+          style={{ backgroundImage: `url(${currentUser.avatar})` }}
         >
           <img
             className="profile__avatar"
-            src={userAvatar}
+            src={currentUser.avatar}
             alt="Profile Photo of the Explorer"
           />
         </div>
         <div className="profile__info">
-          <h1 className="profile__info-name">{userName}</h1>
+          <h1 className="profile__info-name">{currentUser.name}</h1>
           <button
             className="profile__edit-button"
             type="button"
-            onClick={props.onEditProfileClick}
+            onClick={onEditProfileClick}
           >
             <img
               src={editButton}
@@ -57,12 +44,12 @@ export default function Main(props) {
               className="profile__edit-button-image"
             />
           </button>
-          <p className="profile__info-paragraph">{userDescription}</p>
+          <p className="profile__info-paragraph">{currentUser.about}</p>
         </div>
         <button
           className="profile__add-button"
           type="button"
-          onClick={props.onAddPlaceClick}
+          onClick={onAddPlaceClick}
         >
           <img
             src={addButton}
@@ -77,7 +64,9 @@ export default function Main(props) {
           <Card
             key={card._id}
             cardData={card}
-            onCardClick={props.onCardClick}
+            onCardClick={onCardClick}
+            onCardLike={onCardLike}
+            onCardDelete={() => onCardDelete(card)} // Abrimos el popup de confirmación
           />
         ))}
       </section>
