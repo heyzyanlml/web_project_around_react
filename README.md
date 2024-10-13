@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Proyecto: **Alrededor de los EE.UU. - React Refactor**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción del Proyecto
 
-## Available Scripts
+Este proyecto es una refactorización de "Alrededor de los EE.UU.", un sitio web interactivo que permite a los usuarios gestionar tarjetas de imágenes (añadir, eliminar y dar "me gusta"), así como interactuar con ventanas emergentes. El objetivo de esta refactorización es transferir la funcionalidad existente a **React**, modernizando la base de código y adoptando un enfoque declarativo.
 
-In the project directory, you can run:
+## Funcionalidades Principales
 
-### `npm start`
+- **Gestión de Tarjetas**: Seis tarjetas se cargan inicialmente. Los usuarios pueden añadir nuevas tarjetas con imágenes y descripciones personalizadas, eliminarlas o darles "me gusta".
+- **Ventanas Emergentes**: Al hacer clic en una tarjeta, se abre una ventana emergente que muestra una imagen ampliada. Las ventanas emergentes también se utilizan para formularios de edición.
+- **Formulario de Edición**: Los usuarios pueden editar su perfil y cambiar su avatar. La validación de formularios asegura la calidad de los datos antes de enviarlos.
+- **Likes**: Los usuarios pueden marcar tarjetas con "me gusta", con funcionalidad en tiempo real que refleja el estado en la interfaz.
+- **Responsive Design**: El sitio es completamente responsivo, optimizado para diferentes resoluciones de pantalla: 1280px, 880px y 320px.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tecnologías Utilizadas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React**: Refactorización del proyecto original para utilizar la biblioteca React.
+- **JavaScript (ES6)**: Uso de módulos, promesas y técnicas avanzadas como desestructuración.
+- **Context API**: Para compartir datos del usuario actual entre componentes.
+- **API**: Interacción con una API externa para la gestión de datos del usuario y de las tarjetas (GET, POST, PATCH, DELETE).
+- **CSS**: Aplicación de estilos avanzados con media queries y BEM.
+- **React Hooks**: Uso de hooks como `useState` y `useEffect` para manejar el estado y efectos secundarios.
+- **Webpack**: Para optimización del código y soporte de dependencias.
 
-### `npm test`
+## Componentes Clave
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **App.js**: Componente raíz que gestiona el estado global del usuario y las tarjetas.
+- **Header.js, Main.js, Footer.js**: Componentes presentacionales que estructuran la interfaz.
+- **Card.js**: Muestra las tarjetas individuales con las funciones de "me gusta" y eliminar.
+- **PopupWithForm.js**: Componente reutilizable para ventanas emergentes de formularios.
+- **ImagePopup.js**: Ventana emergente para mostrar imágenes en tamaño completo.
+- **EditProfilePopup.js, EditAvatarPopup.js, AddPlacePopup.js**: Formularios para editar el perfil, avatar y añadir nuevas tarjetas.
 
-### `npm run build`
+## Flujo de Trabajo con APIs
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **GET**: Al cargar la página, se obtiene la información del usuario y las tarjetas desde la API.
+- **POST**: El formulario de "Añadir Tarjeta" envía una nueva tarjeta a la API.
+- **PATCH**: La edición del perfil y del avatar actualiza los datos del usuario en la API.
+- **DELETE**: Los usuarios pueden eliminar tarjetas, y estas se eliminan de la base de datos.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
