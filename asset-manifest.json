@@ -1,26 +1,17 @@
 {
   "files": {
-    "main.css": "/web_project_around_react/static/css/main.9ce5c50a.chunk.css",
-    "main.js": "/web_project_around_react/static/js/main.e99ba89b.chunk.js",
-    "main.js.map": "/web_project_around_react/static/js/main.e99ba89b.chunk.js.map",
-    "runtime-main.js": "/web_project_around_react/static/js/runtime-main.3030491d.js",
-    "runtime-main.js.map": "/web_project_around_react/static/js/runtime-main.3030491d.js.map",
-    "static/js/2.2704f623.chunk.js": "/web_project_around_react/static/js/2.2704f623.chunk.js",
-    "static/js/2.2704f623.chunk.js.map": "/web_project_around_react/static/js/2.2704f623.chunk.js.map",
-    "static/js/3.ef902aff.chunk.js": "/web_project_around_react/static/js/3.ef902aff.chunk.js",
-    "static/js/3.ef902aff.chunk.js.map": "/web_project_around_react/static/js/3.ef902aff.chunk.js.map",
+    "main.css": "/web_project_around_react/static/css/main.d86ec80f.css",
+    "main.js": "/web_project_around_react/static/js/main.97441c08.js",
+    "static/js/453.8d428687.chunk.js": "/web_project_around_react/static/js/453.8d428687.chunk.js",
+    "static/media/Logo-white.svg": "/web_project_around_react/static/media/Logo-white.4e8e0a1d604782a0dff8e5b1a5441e4d.svg",
+    "static/media/button-heart.svg": "/web_project_around_react/static/media/button-heart.3826c074a1b94b101e38.svg",
     "index.html": "/web_project_around_react/index.html",
-    "precache-manifest.1fd2baf36c172b9395ec2897586aed7f.js": "/web_project_around_react/precache-manifest.1fd2baf36c172b9395ec2897586aed7f.js",
-    "service-worker.js": "/web_project_around_react/service-worker.js",
-    "static/css/main.9ce5c50a.chunk.css.map": "/web_project_around_react/static/css/main.9ce5c50a.chunk.css.map",
-    "static/js/2.2704f623.chunk.js.LICENSE.txt": "/web_project_around_react/static/js/2.2704f623.chunk.js.LICENSE.txt",
-    "static/media/Logo-white.svg": "/web_project_around_react/static/media/Logo-white.8f7611ae.svg",
-    "static/media/index.css": "/web_project_around_react/static/media/button-heart.dd31dd06.svg"
+    "main.d86ec80f.css.map": "/web_project_around_react/static/css/main.d86ec80f.css.map",
+    "main.97441c08.js.map": "/web_project_around_react/static/js/main.97441c08.js.map",
+    "453.8d428687.chunk.js.map": "/web_project_around_react/static/js/453.8d428687.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.3030491d.js",
-    "static/js/2.2704f623.chunk.js",
-    "static/css/main.9ce5c50a.chunk.css",
-    "static/js/main.e99ba89b.chunk.js"
+    "static/css/main.d86ec80f.css",
+    "static/js/main.97441c08.js"
   ]
 }
