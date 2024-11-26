@@ -2,7 +2,6 @@ import React from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import EditProfilePopup from "./EditProfilePopup.jsx";
 import EditAvatarPopup from "./EditAvatarPopup.jsx";
@@ -22,6 +21,20 @@ function App() {
   const [cardToDelete, setCardToDelete] = useState(null);
   const [currentUser, setCurrentUser] = useState({}); // Usamos {} para evitar errores si algún componente intenta acceder a las propiedades del usuario antes de que los datos se hayan cargado.
 
+  useEffect(() => {
+    api
+      .getUserInfo()
+      .then((userData) => {
+        setCurrentUser(userData); // Guardamos los datos del usuario actual
+      })
+      .catch((err) => {
+        console.error(`Error obteniendo los datos del usuario: ${err}`); // Si hay un error, lo mostramos en la consola;
+      });
+    document.addEventListener("keydown", (evt) => {
+      evt.key === "Escape" && closeAllPopups();
+    });
+  }, []);
+
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
   }
@@ -31,7 +44,7 @@ function App() {
   }
 
   function handleUpdateUser({ name, about }) {
-    api
+    return api
       .updateUserProfile(name, about)
       .then((updatedUserData) => {
         setCurrentUser(updatedUserData);
@@ -54,8 +67,8 @@ function App() {
       });
   }
 
-  function handleAddPlaceSubmit({ link, name }) {
-    api
+  async function handleAddPlaceSubmit({ link, name }) {
+    return api
       .createCard(link, name)
       .then((newCard) => {
         setCards([newCard, ...cards]); // Actualizamos el estado con la nueva tarjeta
@@ -93,12 +106,12 @@ function App() {
       .catch((err) => console.error(`Error al dar/retirar like: ${err}`));
   }
 
-  function handleCardDelete(card) {
+  async function handleCardDelete(card) {
     if (!cardToDelete) {
       return;
     }
 
-    api
+    return api
       .deleteCard(cardToDelete._id)
       .then(() => {
         // Actualiza el estado de las tarjetas
@@ -124,17 +137,6 @@ function App() {
     setisDeletePopupOpen(false);
   }
 
-  useEffect(() => {
-    api
-      .getUserInfo()
-      .then((userData) => {
-        setCurrentUser(userData); // Guardamos los datos del usuario actual
-      })
-      .catch((err) => {
-        console.error(`Error obteniendo los datos del usuario: ${err}`); // Si hay un error, lo mostramos en la consola;
-      });
-  }, []);
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -149,21 +151,17 @@ function App() {
           onClose={closeAllPopups}
           onAddPlaceSubmit={handleAddPlaceSubmit}
         ></AddPlacePopup>
-
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
         />
-
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-
         <ConfirmDeletePopup
           isOpen={isDeletePopupOpen}
           onClose={closeAllPopups}
           onConfirmDelete={handleCardDelete} // Se elimina card cuando el usuario confirma
         ></ConfirmDeletePopup>
-
         <Header />
         <Main
           cards={cards}

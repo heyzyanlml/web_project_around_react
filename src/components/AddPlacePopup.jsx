@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import PopupWithForm from "./PopupWithForm";
+import { useEffect } from "react";
 
 export default function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit }) {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
+  const [buttonText, setbuttonText] = useState("Guardar");
 
   // Manejadores de cambio de entrada
   function handleChangeTitle(e) {
@@ -14,17 +16,27 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit }) {
     setLink(e.target.value); // Actualiza el estado del link de la imagen
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     // Evita que el navegador navegue hacia la dirección del formulario
     e.preventDefault();
 
+    const defaultSubmitText = buttonText;
+    setbuttonText("Guardando...");
+
     // Pasa los valores de los componentes gestionados al controlador externo
     // Llamamos a la función externa onAddPlaceSubmit y le pasamos los datos de la nueva tarjeta
-    onAddPlaceSubmit({
+    await onAddPlaceSubmit({
       name: title,
       link,
     });
+
+    setbuttonText(defaultSubmitText);
   }
+
+  useEffect(() => {
+    setTitle("");
+    setLink("");
+  }, [isOpen]);
 
   return (
     <PopupWithForm
@@ -33,6 +45,7 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      buttonText={buttonText}
     >
       <fieldset className="pop-up__input-container">
         <input

@@ -5,6 +5,7 @@ import CurrentUserContext from "../contexts/CurrentUserContext.js";
 export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [buttonText, setbuttonText] = useState("Guardar");
 
   // Manejadores de cambio de entrada
   function handleChangeName(e) {
@@ -29,10 +30,15 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     // Evita que el navegador navegue hacia la dirección del formulario
     e.preventDefault();
 
+    const defaultSubmitText = buttonText;
+    setbuttonText("Guardando...");
+
     // Pasa los valores de los componentes gestionados al controlador externo
     onUpdateUser({
       name,
       about: description,
+    }).finally(() => {
+      setbuttonText(defaultSubmitText);
     });
   }
 
@@ -43,6 +49,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      buttonText={buttonText}
     >
       <fieldset className="pop-up__input-container">
         <input
@@ -54,7 +61,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
           required
           minLength="2"
           maxLength="40"
-          value={name}
+          defaultValue={name}
           onChange={handleChangeName}
         />
         <span className="pop-up__form-error pop-up__form-error_name"></span>
@@ -67,7 +74,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
           required
           minLength="2"
           maxLength="200"
-          value={description}
+          defaultValue={description}
           onChange={handleChangeDescription}
         />
         <span className="pop-up__form-error pop-up__form-error_about"></span>

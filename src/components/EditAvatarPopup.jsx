@@ -1,16 +1,24 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PopupWithForm from "./PopupWithForm";
 
 export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
   const avatarRef = useRef();
+  const [buttonText, setbuttonText] = useState("Guardar");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    onUpdateAvatar({
+    const defaultSubmitText = buttonText;
+    setbuttonText("Guardando...");
+
+    await onUpdateAvatar({
       avatar: avatarRef.current.value, // Obtiene el valor del input a través de ref
     });
   }
+
+  useEffect(() => {
+    setbuttonText("Guardar");
+  }, [isOpen]);
 
   return (
     <PopupWithForm
@@ -19,6 +27,7 @@ export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      buttonText={buttonText}
     >
       <fieldset className="pop-up__input-container">
         <input
